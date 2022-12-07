@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .utils import password_is_valid
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == "GET":
@@ -15,7 +16,14 @@ def register(request):
         if not password_is_valid(request, password, confirm_password):
             return redirect('/auth/register')
 
-        return HttpResponse('Testando')
+        try:
+            user = User.objects.create_user(username=username,
+                                            password=password,
+                                            is_active=False)
+            user.save()
+            return redirect('/auth/login')
+        except:
+            return redirect('/auth/register')
 
 
 def login(request):
