@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.container h1 {
+    color: #0999a9;
+    font-size: 30px;
+}
+
+.container > p {
+    color: #057784;
+}
+
+.container__form {
+    background: #fff;
+    padding: 1rem;
+    border-bottom: 3px solid #CCC;
+    width: 25rem;
+    border-radius: 4px;
+    margin: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+input {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 1px solid #CCC;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    background: #0999a9;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #08aec1;
+}
+
+.container__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid #CCC;
+    width: 25rem;
+    padding: 0.6rem 0;
+    border-radius: 4px;
+    background: #e5e5e5;
+}
+
+.container__link span {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.container__link a{
+    font-size: 14px;
+}
+
+.container .snackbar{
+    visibility: hidden;
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    border-radius: 12px;
+    background: #FFF;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.snackbar.error {
+    visibility: visible;
+    color: #bd0303;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s;
+    border-left: 3px solid #bd0303;
+}
+
+.snackbar.success {
+    visibility: visible;
+    color: #06af06;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s;
+    border-left: 3px solid #06af06;
+}
+
+@-webkit-keyframes fadein {
+  from {right: 0; opacity: 0;}
+  to {right: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {right: 0; opacity: 0;}
+  to {right: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {right: 30px; opacity: 1;}
+  to {right: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {right: 30px; opacity: 1;}
+  to {right: 0; opacity: 0;}
+}
