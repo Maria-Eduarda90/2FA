@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+<link rel="stylesheet" href="{% static 'base/styles/auth.css' %}">
+
+{% endblock %}
+
+{% block 'titulo' %}
+    login
+{% endblock %}
+
+{% block 'body' %}
+
+<div class="container">
+
+    <h1>Seja bem vindo</h1>
+    <p>Entre em sua conta</p>
+
+    <div class="container__form">
+        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+            <input class="email" name="email" type="email" placeholder="E-mail">
+            <input class="password" name="password" type="password" placeholder="Digite sua senha">
+
+            <button type="submit" class="btn-login">Registrar</button>
+        </form>
+    </div>
+    <div class="container__link">
+        <span>não possui uma conta?</span>
+        <a href="{% url 'register' %}">Register</a>
+    </div>
+    {% if messages %}
+    <br>
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- <div class="snackbar">
+            <p class="title"></p>
+
+            <div class="progress"></div>
+        </div> -->
+</div>
+
+<!-- <script src="{% static 'base/javascript/toastMessage.js' %}"></script> -->
+
+{% endblock %}
