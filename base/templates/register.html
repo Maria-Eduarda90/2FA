@@ -3,7 +3,7 @@
 
 {% block 'head' %}
 
-    <link rel="stylesheet" href="{% static 'register/styles/register.css' %}">
+    <link rel="stylesheet" href="{% static 'base/styles/auth.css' %}">
     
 {% endblock %}
 
@@ -14,6 +14,7 @@
 {% block 'body' %}
 
     <div class="container">
+        
         <h1>Seja bem vindo</h1>
         <p>Crie sua conta</p>
 
@@ -28,16 +29,25 @@
             </form>
         </div>
         <div class="container__link">
-            <p>Já possui uma conta?</p><a href="/login">login</a>
+            <span>Já possui uma conta?</span>
+            <a href="{% url 'login' %}">login</a>
         </div>
+        {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
         
-        <div class="snackbar">
+        <!-- <div class="snackbar">
             <p class="title"></p>
 
             <div class="progress"></div>
-        </div>
+        </div> -->
     </div>
 
-    <script src="{% static 'register/javascript/toastMessage.js' %}"></script>
+    <!-- <script src="{% static 'base/javascript/toastMessage.js' %}"></script> -->
 
 {% endblock %}
