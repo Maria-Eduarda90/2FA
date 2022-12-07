@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block 'head' %}
+
     <link rel="stylesheet" href="{% static 'register/styles/register.css' %}">
+    
 {% endblock %}
 
 {% block 'titulo' %}
@@ -17,17 +19,25 @@
 
         <div class="container__form">
             <form action="{% url 'register' %}" method="POST">{% csrf_token %}
-                <input name="username" type="text" placeholder="Nome de usuário">
-                <input name="email" type="email" placeholder="E-mail">
-                <input name="password" type="password" placeholder="Digite sua senha">
-                <input name="confirm_password" type="password" placeholder="Confirme sua senha">
+                <input class="username" name="username" type="text" placeholder="Nome de usuário">
+                <input class="email" name="email" type="email" placeholder="E-mail">
+                <input class="password" name="password" type="password" placeholder="Digite sua senha">
+                <input class="confirm_password" name="confirm_password" type="password" placeholder="Confirme sua senha">
 
-                <button>Registrar</button>
+                <button type="submit" class="btn-login">Registrar</button>
             </form>
         </div>
         <div class="container__link">
             <p>Já possui uma conta?</p><a href="/login">login</a>
         </div>
+        
+        <div class="snackbar">
+            <p class="title"></p>
+
+            <div class="progress"></div>
+        </div>
     </div>
+
+    <script src="{% static 'register/javascript/toastMessage.js' %}"></script>
 
 {% endblock %}
