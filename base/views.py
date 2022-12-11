@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .utils import password_is_valid
+from .utils import password_is_valid, send_email
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.messages import constants
 from django.contrib import messages
 from django.contrib import auth
+from django.conf import settings
+import os
 
 def register(request):
     if request.method == "GET":
@@ -26,7 +28,9 @@ def register(request):
                                             password=password,
                                             is_active=False)
             user.save()
-            messages.add_message(request, constants.SUCCESS, 'Ùsuario criado com sucesso')
+            path_template = os.path.join(settings.BASE_DIR, 'base/templates/emails/register_confirm.html')
+            send_email(path_template, 'Cadastro confirmado', [email,], username=username)
+            messages.add_message(request, constants.SUCCESS, 'Usuario criado com sucesso')
             return redirect('/auth/login')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
