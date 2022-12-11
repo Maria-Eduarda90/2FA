@@ -9,6 +9,8 @@ from django.contrib import auth
 
 def register(request):
     if request.method == "GET":
+        if request.user.is_authenticated:
+            return redirect('/')
         return render(request, 'register.html')
     elif request.method == "POST":
         username = request.POST.get('username')
@@ -33,6 +35,8 @@ def register(request):
 
 def login(request):
     if request.method == "GET":
+        if request.user.is_authenticated:
+            return redirect('/')
         return render(request, 'login.html')
     elif request.method == "POST":
         email = request.POST.get('email')
@@ -46,3 +50,7 @@ def login(request):
         else:
             auth.login(request, user)
             return redirect('/')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/auth/register')
