@@ -20,7 +20,7 @@
 
     <div class="container__form">
         <form action="{% url 'login' %}" method="POST">{% csrf_token %}
-            <input class="email" name="email" type="email" placeholder="E-mail">
+            <input class="username" name="username" type="text" placeholder="Nome de usuário">
             <input class="password" name="password" type="password" placeholder="Digite sua senha">
 
             <button type="submit" class="btn-login">Registrar</button>
